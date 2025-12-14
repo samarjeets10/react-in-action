@@ -1,33 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react'
+import './index.css'
+import axios from 'axios'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [userData, setUserData] = useState([]);
+  const getData = async () => {
+    const response = await axios.get('https://picsum.photos/v2/list?page=5&limit=30');
+    setUserData(response.data);
+  }
+
+  useEffect(function() {
+    getData()
+  }, []);
+
+  let printUserData = <h2 className='text-xl font-bold text-gray-400'>No User Available!!</h2>
+
+  if(userData.length > 0) {
+    printUserData = userData.map(function(elem, idx) {
+      return <div>
+        <a href={elem.url} target='_blank'>
+          <div className='h-50 w-65 rounded-xl overflow-hidden cursor-pointer bg-white hover:scale-102 transition-all duration-200 ease '>
+            <img className='h-full w-full object-cover' src={elem.download_url} alt="image" />
+          </div>
+        </a>
+        <h2 className='px-1 font-bold' key={idx}>{elem.author}</h2>
+      </div>
+    });
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='bg-black p-4 h-screen w-screen text-white overflow-auto scroll-smooth'>
+        <div className='mt-5 flex items-center justify-center flex-wrap gap-3'>
+          {printUserData}
+        </div>
+
+        <div className='w-full mt-10 py-9 flex items-center justify-center gap-5 '>
+          <button className='px-3.5 py-1 bg-red-500 text-sm text-white font-bold rounded-md cursor-pointer active:scale-90 duration-150 ease-in'>Prev</button>
+          <button className='px-3.5 py-1 bg-blue-400 text-sm text-white font-bold rounded-md cursor-pointer active:scale-90 duration-150 ease-in'>Next</button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
