@@ -5,14 +5,15 @@ import axios from 'axios'
 function App() {
 
   const [userData, setUserData] = useState([]);
+  const [page, setPage] = useState(1);
   const getData = async () => {
-    const response = await axios.get('https://picsum.photos/v2/list?page=5&limit=30');
+    const response = await axios.get(`https://picsum.photos/v2/list?page=${page}&limit=10`);
     setUserData(response.data);
   }
 
   useEffect(function() {
     getData()
-  }, []);
+  }, [page]);
 
   let printUserData = <h2 className='text-xl font-bold text-gray-400'>No User Available!!</h2>
 
@@ -32,13 +33,23 @@ function App() {
   return (
     <>
       <div className='bg-black p-4 h-screen w-screen text-white overflow-auto scroll-smooth'>
-        <div className='mt-5 flex items-center justify-center flex-wrap gap-3'>
+        <div className='w-full flex items-center justify-center flex-wrap gap-3'>
           {printUserData}
         </div>
 
-        <div className='w-full mt-10 py-9 flex items-center justify-center gap-5 '>
-          <button className='px-3.5 py-1 bg-red-500 text-sm text-white font-bold rounded-md cursor-pointer active:scale-90 duration-150 ease-in'>Prev</button>
-          <button className='px-3.5 py-1 bg-blue-400 text-sm text-white font-bold rounded-md cursor-pointer active:scale-90 duration-150 ease-in'>Next</button>
+        <div className='w-full mt-10 flex items-center justify-center gap-5 '>
+          <button className='px-3.5 py-1 bg-red-500 text-sm text-white font-bold rounded-md cursor-pointer active:scale-90 duration-150 ease-in'
+          onClick={() => {
+            setPage((prev) => prev + 1);
+          }}>
+            Prev
+          </button>
+          <button className='px-3.5 py-1 bg-blue-400 text-sm text-white font-bold rounded-md cursor-pointer active:scale-95 '
+          onClick={() => {
+            setPage((prev) => prev - 1);
+          }}>
+            Next
+          </button>
         </div>
       </div>
     </>
