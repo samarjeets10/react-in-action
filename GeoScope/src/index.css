@@ -1,0 +1,36 @@
+
+@import "tailwindcss";
+
+
+
+h1,
+h2,
+h3,
+h4, 
+h5 {
+    color: #fff;
+}
+
+
+p,
+li,
+a, 
+button {
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.6rem;
+    color: #fff;
+}
+
+li,
+ul {
+    list-style: none;
+}
+
+a {
+    color: #000;
+
+    &:hover {
+        color: #2e86c1;
+    }
+}
