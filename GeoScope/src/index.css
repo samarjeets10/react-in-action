@@ -16,10 +16,8 @@ p,
 li,
 a, 
 button {
-    font-size: 1.7rem;
     letter-spacing: 0.1rem;
     line-height: 1.6rem;
-    color: #fff;
 }
 
 li,
@@ -28,7 +26,6 @@ ul {
 }
 
 a {
-    color: #000;
 
     &:hover {
         color: #2e86c1;
