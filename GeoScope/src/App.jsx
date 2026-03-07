@@ -30,7 +30,7 @@ function App() {
 
 
 
-         <div className='w-full px-2.5 fixed bottom-0 left-0 bg-red-400'>
+         <div className='w-full px-4 text-2xl font-semibold'>
             <Footer />
          </div>
       </div>

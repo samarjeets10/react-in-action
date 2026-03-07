@@ -1,9 +1,43 @@
 import React from 'react'
-
+import CountryData from '../API/countryData.json'
 function About() {
+
+  console.log(CountryData);
+
   return (
     <div>
-      <h1>About</h1>
+      <div className='w-full mt-8 flex items-center justify-center text-center'>
+        <h1 className='text-3xl font-semibold leading-7'>Here are the Intesting Facts
+          <br />
+          we're proud of
+        </h1>
+      </div>
+      
+      <div className='card_container w-full my-12 px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+
+        {CountryData.map((country) => {
+          // destructuring :
+          const {id, countryName,capital, population, interestingFacts} = country;
+
+          return <div className='card p-4 rounded-2xl bg-neutral-900 text-white' key={id}>
+                  <h2 className='text-xl font-bold mb-2'>{countryName}</h2>
+                  <p>
+                    <span className='text-[1.1rem] text-gray-400 font-semibold'>capital: </span>
+                    {capital}
+                  </p>
+                  <p>
+                    <span className='text-[1.1rem] text-gray-400 font-semibold'>Population: </span>
+                    {population}
+                  </p>
+                  <p>
+                    <span className='text-[1.1rem] text-gray-400 font-semibold'>Intersting Facts: </span>
+                    {interestingFacts}
+                  </p>
+                </div>
+        })}
+        
+
+      </div>
     </div>
   )
 }
