@@ -9,9 +9,9 @@ function NavBar() {
 
         <div className='flex items-center gap-8 text-sm text-white'>
             <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
             <Link to="/country">Country</Link>
             <Link to="/contact">Contacts</Link>
-            <Link to="/about">About</Link>
         </div>
 
       </nav>

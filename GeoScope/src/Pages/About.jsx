@@ -19,20 +19,20 @@ function About() {
           // destructuring :
           const {id, countryName,capital, population, interestingFacts} = country;
 
-          return <div className='card p-4 rounded-2xl bg-neutral-900 text-white' key={id}>
-                  <h2 className='text-xl font-bold mb-2'>{countryName}</h2>
-                  <p>
-                    <span className='text-[1.1rem] text-gray-400 font-semibold'>capital: </span>
-                    {capital}
-                  </p>
-                  <p>
-                    <span className='text-[1.1rem] text-gray-400 font-semibold'>Population: </span>
-                    {population}
-                  </p>
-                  <p>
-                    <span className='text-[1.1rem] text-gray-400 font-semibold'>Intersting Facts: </span>
-                    {interestingFacts}
-                  </p>
+          return <div className='card p-4 rounded-2xl bg-[linear-gradient(71deg,#080509,#1a171c,#080509)] border-1 border-neutral-300 text-white' key={id}>
+                    <h2 className='text-xl font-bold mb-2'>{countryName}</h2>
+                    <p>
+                      <span className='text-[1.1rem] text-gray-400 font-semibold'>capital: </span>
+                      {capital}
+                    </p>
+                    <p>
+                      <span className='text-[1.1rem] text-gray-400 font-semibold'>Population: </span>
+                      {population}
+                    </p>
+                    <p>
+                      <span className='text-[1.1rem] text-gray-400 font-semibold'>Intersting Facts: </span>
+                      {interestingFacts}
+                    </p>
                 </div>
         })}
         

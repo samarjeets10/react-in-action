@@ -1,9 +1,10 @@
 import React from 'react'
+import ContactForm from '../components/ContactForm'
 
 function Contact() {
   return (
-    <div>
-      <h1>Contacts</h1>
+    <div className='h-[80vh] w-full flex justify-center'>
+      <ContactForm />
     </div>
   )
 }
