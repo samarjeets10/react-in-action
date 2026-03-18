@@ -16,7 +16,7 @@ function App() {
     <>
       <div className='min-h-screen w-screen bg-black font-mono flex flex-col'>
 
-          <div className='w-full p-2.5'>
+          <div className='w-full'>
             <NavBar />
           </div>
 
@@ -30,7 +30,7 @@ function App() {
 
 
 
-         <div className='w-full px-4 text-2xl font-semibold'>
+         <div className='w-full text-2xl font-semibold'>
             <Footer />
          </div>
       </div>

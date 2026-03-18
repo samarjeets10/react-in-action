@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function NavBar() {
   return (
     <div>
-      <nav className='w-full px-12 py-2.5 flex items-center justify-between'>
+      <nav className='w-full px-18 py-6 flex items-center justify-between'>
         <h1 className='text-[1.6rem] text-white font-bold'>GeoScope.</h1>
 
         <div className='flex items-center gap-8 text-sm text-white'>
