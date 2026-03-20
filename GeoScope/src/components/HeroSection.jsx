@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 
 function HeroSection() {
   return (
-    <div className='w-full min-h-[80vh] flex flex-col items-center'>
+    <div className='w-full flex flex-col items-center'>
         <div className='w-full px-[4.5rem] pb-8 pt-8 flex flex-col text-center items-center justify-center sm:flex-col md:flex-row lg:flex-row md:text-start lg:text-start gap-[4rem]'>
             <div className='w-[60%] flex flex-col gap-4'>
                 <h2 className='text-[3.5vw] font-semibold leading-13'>Explore the World, One Country at a Time.</h2>
                 <p className='text-md text-white'>Navigate the globe through a lens of precision. Your curated gateway to real-time country data and worldwide intelligence.</p>
                 
                 <Link to="/about">
-                <div className='w-fit px-4 mt-2 text-white py-2 border-2 border-white rounded-full flex items-center gap-4 cursor-pointer'>
-                    <button className='cursor-pointer'>Start Exploring</button>
+                <div className='w-fit px-4 mt-2 text-white py-2 border-2 border-white rounded-full flex items-center gap-4 cursor-pointer transition-all transition-[2.5s] ease-in-out hover:bg-white hover:text-black'>
+                    <button className='cursor-pointer font-semibold'>Start Exploring</button>
                     <i class="ri-arrow-right-long-line"></i>
                 </div></Link>
             </div>

@@ -5,9 +5,9 @@ function NavBar() {
   return (
     <div>
       <nav className='w-full px-18 py-6 flex items-center justify-between'>
-        <h1 className='text-[1.6rem] text-white font-bold'>GeoScope.</h1>
+        <h1 className='text-[1.6rem] text-white font-extrabold'>GeoScope.</h1>
 
-        <div className='flex items-center gap-8 text-sm text-white'>
+        <div className='flex items-center gap-8 text-sm text-white font-semibold'>
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
             <Link to="/country">Country</Link>

@@ -5,7 +5,7 @@ function About() {
   console.log(CountryData);
 
   return (
-    <div>
+    <div className='w-full'>
       <div className='w-full mt-6 mb-14 flex items-center justify-center text-center'>
         <h1 className='text-3xl font-semibold leading-8'>Here are the Intesting Facts
           <br />
@@ -13,7 +13,7 @@ function About() {
         </h1>
       </div>
       
-      <div className='card_container w-full my-12 px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-3 gap-6'>
+      <div className='card_container w-full py-8 px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-3 gap-6'>
 
         {CountryData.map((country) => {
           // destructuring :

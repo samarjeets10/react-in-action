@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <div className='min-h-screen w-screen bg-black font-mono flex flex-col'>
+      <div className='min-h-screen w-full bg-black font-mono flex flex-col'>
 
           <div className='w-full'>
             <NavBar />
