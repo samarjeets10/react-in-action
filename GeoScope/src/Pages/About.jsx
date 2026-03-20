@@ -19,7 +19,7 @@ function About() {
           // destructuring :
           const {id, countryName,capital, population, interestingFacts} = country;
 
-          return <div className='card p-4 rounded-2xl bg-[linear-gradient(71deg,#080509,#1a171c,#080509)] border-1 border-neutral-300 text-white' key={id}>
+          return <div className='card p-4 rounded-2xl bg-[linear-gradient(71deg,#080509,#1a171c,#080509)] border-1 border-neutral-300 font-bold text-white' key={id}>
                     <h2 className='text-xl font-bold mb-2'>{countryName}</h2>
                     <p>
                       <span className='text-[1.1rem] text-gray-400 font-semibold'>capital: </span>

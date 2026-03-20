@@ -20,8 +20,23 @@ function Country() {
 
 
   return (
-    <div className='h-full w-full px-18 py-8'>
-      <div className='w-full grid grid-cols-4'>
+    <div className='h-full w-full px-18 py-4'>
+      {/* <h1 className='text-center text-white text-4xl font-bold mt-2 mb-8'>Explore Country World Wide</h1> */}
+      <div className='w-full py-2 flex items-center justify-between'>
+        <div>
+          <div className='px-4 border-1 border-white text-white rounded-full flex items-center gap-4'>
+            <input type="text" placeholder='Search here..' className='py-1 outline-none' />
+            <i class="ri-globe-line"></i>
+          </div>
+        </div>
+
+        <div className='flex items-center gap-4 text-sm text-white font-bold'>
+          <button className='px-2 border-1 border-white rounded-md cursor-pointer hover:bg-white hover:text-black transition-all transition-[2s] ease-in-out'>Asc</button>
+          <button className='px-2 border-1 border-white rounded-md cursor-pointer hover:bg-white hover:text-black transition-all transition-[2s] ease-in-out'>Dsc</button>
+        </div>
+      </div>
+
+      <div className='w-full mt-6 grid grid-cols-4 gap-6'>
         {
           counrties.map((curCountry, idx) => {
             return <CountryCard country={curCountry} key={idx} />
