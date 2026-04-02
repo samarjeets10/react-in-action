@@ -9,7 +9,7 @@ function HeroSection() {
                 <h2 className='text-[3.5vw] font-semibold leading-13'>Explore the World, One Country at a Time.</h2>
                 <p className='text-md text-white'>Navigate the globe through a lens of precision. Your curated gateway to real-time country data and worldwide intelligence.</p>
                 
-                <Link to="/about">
+                <Link to="/country">
                 <div className='w-fit px-4 mt-2 text-white py-2 border-2 border-white rounded-full flex items-center gap-4 cursor-pointer transition-all transition-[2.5s] ease-in-out hover:bg-white hover:text-black'>
                     <button className='cursor-pointer font-semibold'>Start Exploring</button>
                     <i class="ri-arrow-right-long-line"></i>

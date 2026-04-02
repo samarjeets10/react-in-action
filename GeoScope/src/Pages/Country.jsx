@@ -14,7 +14,7 @@ function Country() {
     })
   }, []);
 
-  if (isPending) return <div className='w-full h-screen flex items-center justify-center'>
+  if (isPending) return <div className='w-full h-[55vh] flex items-center justify-center'>
     <h1 className='text-3xl text-white font-bold flex self-center justify-self-center'>Loading...</h1>
   </div>
 

@@ -19,7 +19,7 @@ function CountryCard({ country }) {
                 <p><span className='text-gray-400'>Capital: </span>{capital[0]}</p>
             </div>
             <Link to={`/country/${name.common}`}>
-              <button className='px-4 py-1 border-2 mt-4 border-white text-white font-bold rounded-full transition-all transition-[2s] ease-in-out hover:bg-white hover:text-black cursor-pointer'>Read more <i class="ri-arrow-right-long-line"></i></button>
+              <button className='px-4 py-1 border-1 mt-4 border-white text-white font-bold rounded-full transition-all transition-[2s] ease-in-out hover:bg-white hover:text-black cursor-pointer'>Read more <i class="ri-arrow-right-long-line"></i></button>
             </Link>
         </div>
       </div>

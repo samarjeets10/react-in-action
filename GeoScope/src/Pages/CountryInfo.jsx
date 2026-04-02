@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useTransition } from 'react'
 import { useParams } from 'react-router-dom'
+import CountrySepCard from '../components/CountrySepCard';
 import { getCountrySepData } from '../API/postApi';
 
 function CountryInfo() {
@@ -23,27 +24,16 @@ function CountryInfo() {
 
   }, []);
 
-  if (isPending || !country) return <div className='w-full h-screen flex items-center justify-center'>
+  if (isPending || !country) return <div className='w-full h-[55vh] flex items-center justify-center'>
     <h1 className='text-3xl text-white font-bold flex self-center justify-self-center'>Loading...</h1>
   </div>
-
-  const {
-    name,
-    population,
-    region,
-    subregion,
-    capital,
-    tld,
-    languages,
-    currencies,
-    borders,
-    flags
-  } = country;
 
   
   return (
     <div>
-      
+      <div className='w-full px-8 py-8 flex items-center justify-center'>
+        <CountrySepCard country={country} />
+      </div>
     </div>
   )
 }
