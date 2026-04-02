@@ -1,0 +1,53 @@
+import React, { useEffect, useState, useTransition } from 'react'
+import { useParams } from 'react-router-dom'
+import { getCountrySepData } from '../API/postApi';
+
+function CountryInfo() {
+
+  const [isPending, startTransition] = useTransition([]);
+  const [country, setCountry] = useState();
+
+  const params = useParams();
+  console.log(params);
+
+  useEffect(() => {
+    startTransition(async () => {
+      const resp = await getCountrySepData(params.parameter);
+      
+      if (resp.status === 200) {
+        setCountry(resp.data[0]);
+        console.log(resp.data[0]);
+      }
+  
+    })
+
+  }, []);
+
+  if (isPending || !country) return <div className='w-full h-screen flex items-center justify-center'>
+    <h1 className='text-3xl text-white font-bold flex self-center justify-self-center'>Loading...</h1>
+  </div>
+
+  const {
+    name,
+    population,
+    region,
+    subregion,
+    capital,
+    tld,
+    languages,
+    currencies,
+    borders,
+    flags
+  } = country;
+
+  
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default CountryInfo
+
+

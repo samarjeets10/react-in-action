@@ -38,7 +38,7 @@ function Country() {
 
       <div className='w-full mt-6 grid grid-cols-4 gap-6'>
         {
-          counrties.map((curCountry, idx) => {
+            counrties.map((curCountry, idx) => {
             return <CountryCard country={curCountry} key={idx} />
           })
         }

@@ -7,6 +7,8 @@ import Error from './Pages/Error'
 import { Route, Routes } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+// import CountryPage from './Pages/CountryPage'
+import CountryInfo from './Pages/CountryInfo'
 
 
 function App() {
@@ -24,6 +26,9 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/country' element={<Country />} />
+            
+            <Route path='/country/:parameter' element={<CountryInfo />} />
+
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Error />} />
           </Routes>
