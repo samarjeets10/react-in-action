@@ -22,7 +22,7 @@ function CountrySepCard({ country }) {
                             }</p>
                             <p><span className='text-lg text-gray-400'>Capital: </span>{country.capital[0]}</p>
                             <p><span className='text-lg text-gray-400'>Population: </span>{country.population}</p>
-                            <p><span className='text-lg text-gray-400'>Curencies: </span>{
+                            <p><span className='text-lg text-gray-400'>Currency: </span>{
                                 Object.keys(country.currencies).map((curElem) => country.currencies[curElem].name).join(", ")
                             } {Object.keys(country.currencies).map((curElem) => country.currencies[curElem].symbol).join(", ")} </p>
                             <p><span className='text-lg text-gray-400'>Region: </span>{country.region}</p>

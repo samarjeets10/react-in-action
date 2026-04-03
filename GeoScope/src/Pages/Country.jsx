@@ -3,6 +3,7 @@ import { getCountryData } from '../API/postApi';
 import CountryCard from '../components/CountryCard';
 import SearchFilter from '../components/SearchFilter';
 import FilterSelect from '../components/FilterSelect';
+import AscDec from '../components/AscDec';
 
 function Country() {
 
@@ -52,9 +53,8 @@ function Country() {
           <SearchFilter search={search} setSearch={setSearch} />
         </div>
 
-        <div className='flex items-center gap-4 text-sm text-white font-bold'>
-          <button className='px-2 border-1 border-white rounded-md cursor-pointer hover:bg-white hover:text-black transition-all transition-[2s] ease-in-out'>Asc</button>
-          <button className='px-2 border-1 border-white rounded-md cursor-pointer hover:bg-white hover:text-black transition-all transition-[2s] ease-in-out'>Dsc</button>
+        <div>
+          <AscDec country={counrties} setCountry={setCountries} />
         </div>
 
         <div>
