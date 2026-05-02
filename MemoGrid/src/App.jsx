@@ -26,6 +26,9 @@ function App() {
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
+  const [score, setScore] =  useState(0);
+  const [moves, setMoves] = useState(0);
+  const [isLocked, setIsLocked] = useState(false);
 
   const initializeGame = () => {
     // shuffel the cards
@@ -39,6 +42,10 @@ function App() {
     ));
 
     setCards(finalCards);
+    setMoves(0);
+    setScore(0);
+    setMatchedCards([]);
+    setFlippedCards([]);
 
   }
 
@@ -48,12 +55,10 @@ function App() {
     initializeGame();
   }, []);
 
-
-
   const handleCardClick = (card) => {
     // dont alow clicking if the card is already flipped or matched
 
-    if (card.isFlipped || card.isMatched) {
+    if (card.isFlipped || card.isMatched || isLocked || flippedCards.length === 2) {
       return;
     }
 
@@ -73,12 +78,13 @@ function App() {
     setFlippedCards(newFlippedCards);
 
     if (flippedCards.length === 1) {
+      setIsLocked(true);
       const firstCard = cards[flippedCards[0]];
 
       if (firstCard.value === card.value) {
         setTimeout(() => {
           setMatchedCards((prev) => [...prev, firstCard.id, card.id]);
-
+          setScore((prev) => prev + 1);
           const newMatchedCards = cards.map((c) => {
             if (c.id === card.id || c.id === firstCard.id) {
               return {...c, isMatched: true };
@@ -97,7 +103,8 @@ function App() {
             })
           );
           setFlippedCards([]);
-        }, 500);
+          setIsLocked(false);
+        }, 200);
 
       } else {
         // flip back card 1 and card 2 :
@@ -112,20 +119,21 @@ function App() {
           });
 
           setCards(flippedBackCard);
+          setIsLocked(false);
           setFlippedCards([]);
 
         }, 1000);
       }
     }
 
-
+    setMoves((prev) => prev + 1);
 
   }
 
   return (
     <>
       <div className="app">
-        <GameHeader score={3} moves={10} />
+        <GameHeader score={score} moves={moves} onReset={initializeGame} />
 
         <div className='cards-grid'>
           {
