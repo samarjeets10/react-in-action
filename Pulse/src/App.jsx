@@ -11,7 +11,7 @@ function App() {
         {/* <NavBar */}
         <main className="app-main">
           <div className="player-section">
-            {/* <MusicPlayer /> */}
+            <MusicPlayer />
           </div>
           <div className="content-section">
               <Routes>
