@@ -1,4 +1,3 @@
-import React from 'react'
 import MusicPlayer from './components/MusicPlayer'
 import { Route, Routes } from 'react-router-dom'
 import AllSongs from './components/AllSongs'

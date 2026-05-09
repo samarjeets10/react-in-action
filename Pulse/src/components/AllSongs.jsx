@@ -24,7 +24,7 @@ function AllSongs() {
                         </div>
                         <div className="play-buton">
                             {
-                               currentTrackIndex === key ? "🎵" : "▶️"
+                               currentTrackIndex === key ? <i class="ri-music-fill"></i> : <i class="ri-play-circle-line"></i>
                             }
                         </div>
                     </div>
