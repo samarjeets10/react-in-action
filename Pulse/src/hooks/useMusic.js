@@ -27,6 +27,7 @@ export const useMusic = () => {
     const [duration, setDuration] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPause, setIsPause] = useState(true);
+    const [volume, setVolume] = useState(0);
 
     // get inf about the current song playing and the array index of the list of the songs here :
 
@@ -41,6 +42,8 @@ export const useMusic = () => {
            setCurrentTrack(allSongs[nextIndex]);
            return nextIndex;
         });
+
+        setIsPlaying(false);
     };
 
     const prevTrack = () => {
@@ -48,7 +51,9 @@ export const useMusic = () => {
             const nextIndex = prev === 0 ? allSongs.length - 1 : prev - 1;
             setCurrentTime(allSongs[nextIndex]);
             return nextIndex;
-        })
+        });
+
+        setIsPlaying(false);
     };
 
     const formatTime = (time) => {
@@ -82,7 +87,9 @@ export const useMusic = () => {
         play,
         pause,
         isPlaying,
-        isPause
+        isPause,
+        volume,
+        setVolume
     };
 
 }

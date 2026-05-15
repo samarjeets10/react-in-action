@@ -13,7 +13,9 @@ function MusicPlayer() {
     nextTrack, 
     prevTrack, 
     play, pause, 
-    isPlaying 
+    isPlaying,
+    volume,
+    setVolume
     } = useMusic();
 
   const audioRef = useRef(null);
@@ -22,9 +24,23 @@ function MusicPlayer() {
     const audio = audioRef.current;
 
     if(!audio) return;
-
-    const newTime = e.target.value();
+    const newTime = parseFloat(e.target.value);
+    audio.currentTime = newTime;
+    setCurrentTime(newTime);
   };
+
+
+  const handleVolumeChange = (e) => {
+    const newVolume = parseFloat(e.target.value);
+    setVolume(newVolume);
+  }
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if(!audio) return;
+
+    audio.volume = volume;
+  }, [volume]);
 
   useEffect(() => {
 
@@ -72,6 +88,9 @@ function MusicPlayer() {
 
   }, [isPlaying]);
 
+
+  const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
+
   return (
     <div className="music-player">
       <audio ref={audioRef} src={currentTrack.url} preload='metadata' crossOrigin='anonymous' />
@@ -82,7 +101,9 @@ function MusicPlayer() {
 
       <div className="progress-container">
         <span className='time'>{formatTime(currentTime)}</span>
-        <input type="range" min={0} max={duration || 0} step="0.1" defaultValue={currentTime || 0} className='progress-bar' onChange={handleTimeChange}/>
+        <input type="range" min={0} max={duration || 0} step="0.1" defaultValue={currentTime || 0} className='progress-bar' onChange={handleTimeChange}
+        style={{"--progress": `${progressPercentage}%`}}
+        />
         <span className='time'>{formatTime(duration)}</span>
       </div>
 
@@ -102,8 +123,18 @@ function MusicPlayer() {
           <i class="ri-skip-forward-mini-fill"></i>
         </button>
       </div>
+
+      <div className="volume-container">
+        <span className="volume-icon">
+          <i class="ri-volume-mute-line"></i>
+        </span>
+        <input type="range" min="0" max="1" step="0.05" className='volume-bar' onChange={handleVolumeChange} value={ volume} /> 
+        <span className="volume-icon">
+          <i class="ri-volume-up-line"></i>
+        </span>
+      </div>
     </div>
-  )
+  );
 }
 
 export default MusicPlayer
