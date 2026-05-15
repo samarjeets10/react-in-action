@@ -18,6 +18,14 @@ function MusicPlayer() {
 
   const audioRef = useRef(null);
 
+  const handleTimeChange = (e) => {
+    const audio = audioRef.current;
+
+    if(!audio) return;
+
+    const newTime = e.target.value();
+  };
+
   useEffect(() => {
 
     const audio = audioRef.current;
@@ -29,10 +37,22 @@ function MusicPlayer() {
       console.log(audio.duration);
     }
 
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime);
+    };
+
+    const handleEnded = () => {
+      nextTrack();
+    }
+
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("ended", handleEnded);
 
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("ended", handleEnded);
     }
 
   }, [setDuration, setCurrentTime, currentTrack]);
@@ -62,7 +82,7 @@ function MusicPlayer() {
 
       <div className="progress-container">
         <span className='time'>{formatTime(currentTime)}</span>
-        <input type="range" min={0} max={duration || 0} step="0.1" defaultValue={currentTime || 0} className='progress-bar'/>
+        <input type="range" min={0} max={duration || 0} step="0.1" defaultValue={currentTime || 0} className='progress-bar' onChange={handleTimeChange}/>
         <span className='time'>{formatTime(duration)}</span>
       </div>
 
