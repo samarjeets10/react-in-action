@@ -13,8 +13,8 @@ function Hero() {
             </div>
 
             <div className='w-full flex flex-col items-end mt-4 md:max-w-[500px]'>
-            <p className='text-sm md:text-lg'>A digital canvas for striking visual stories,</p>
-            <p className='text-sm pl-0 md:text-lg'>designed for the observant, modern soul.</p>
+            <p className='text-nowrap text-sm md:text-lg'>A digital canvas for striking visual stories,</p>
+            <p className=' text-nowrap text-sm pr-0 md:text-lg md:pr-10'>designed for the observant, modern soul.</p>
             </div>
         </div>
     </div>
