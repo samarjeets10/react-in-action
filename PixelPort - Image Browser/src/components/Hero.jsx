@@ -7,7 +7,7 @@ function Hero() {
             <p className='text-sm'>Our Stories</p>
         </div>
 
-        <div className='mt-6 w-full flex-col md:flex-row md:flex items-baseline justify-between'>
+        <div className='mt-2 w-full flex-col md:flex-row md:flex items-baseline justify-between'>
             <div>
               <h1 className='text-5xl md:text-7xl font-semibold text-nowrap'>Photo Gallery</h1>
             </div>

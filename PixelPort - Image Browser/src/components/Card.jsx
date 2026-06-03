@@ -1,16 +1,23 @@
 import React from 'react'
 
-function Card({ element, index }) {
+function Card({ element }) {
+
+  const width = 600;
+  const height = 400;
+  const imageUrl = `https://picsum.photos/id/${element.id}/${width}/${height}`;
+
+
 
   return (
-    <div key={index} 
+    <div 
     className='min-w-[360px] w-full h-[380px] overflow-hidden'
-    // style={{aspectRatio: `${element.height} / ${element.width}`}}
     >
         <img 
+        loading='lazy'
+        decoding='async'
         className='h-full w-full object-cover object-center cursor-pointer transition delay-100 duration-150 hover:grayscale-75 hover:scale-105'
-        src={element.download_url}
-        alt={element.author} />
+        src={imageUrl}
+        alt={`Photo by ${element.author}`} />
     </div>
   )
 }

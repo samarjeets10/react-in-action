@@ -10,15 +10,24 @@ function App() {
 
   const [imgData, setImgData] = useState([]);
   const [index, setIndex] = useState(2);
-  // const [limit, setLimit] = useState(10);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const getData = async () => {
+
+    setIsLoading(true);
+    setError(null);
+
     try {
       const response = await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=10`);
-      setImgData(response.data);
-      console.log(response.data);
+      setImgData(
+        prev => [...prev, ...response.data]
+      );
     } catch (error) {
-      console.log('error featching image :', error.message);
+      setError(error.message)
+      console.log('error featching image ;', error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -39,21 +48,43 @@ function App() {
           <Hero />
 
           <div className='w-full pt-4 mt-20 grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2'>
+
+            {
+              error && (
+                <div className='mt-8 text-center text-red-600'>
+                  Error loading images: {error}
+                </div>
+              )
+            }
             
             {
-              imgData.map((element, index)=> (
-                <Card element={element} key={index} />
+              imgData.map((element)=> (
+                <Card element={element} key={element.id} />
               ))
             }
 
-            <div>
-              <button 
-              className='px-2 py-1 bg-neutral-900 text-white cursor-pointer'
-              >More</button>
-            </div>
+            {
+              isLoading && (
+                  <div className='mt-6 w-full text-center text-lg text-gray-700'>
+                    
+                  </div>
+              )
+            }
+
           </div>
 
         </main>
+
+        <div className='w-full p-8 mt-8 flex items-center justify-center'>
+          <button 
+          onClick={() => setIndex(prev => prev + 1)}
+          className='px-6 py-2 rounded-lg bg-neutral-900 text-white cursor-pointer'
+          >
+            {
+              isLoading ? "Loading..." : "More"
+            }
+          </button>
+        </div>
 
         <div className='w-full mt-12'>
           {/* Footer section */}
