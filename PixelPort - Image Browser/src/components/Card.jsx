@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Card({ element }) {
+function Card({ element, onSelect }) {
 
   const width = 600;
   const height = 400;
@@ -10,6 +10,7 @@ function Card({ element }) {
 
   return (
     <div 
+    onClick={onSelect}
     className='min-w-[360px] w-full h-[380px] overflow-hidden'
     >
         <img 

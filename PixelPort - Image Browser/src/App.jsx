@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
 import Card from './components/Card'
+import LightBox from './components/LightBox'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
   const [index, setIndex] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const getData = async () => {
 
@@ -51,15 +53,19 @@ function App() {
 
             {
               error && (
-                <div className='mt-8 text-center text-red-600'>
-                  Error loading images: {error}
+                <div className='mt-8 w-full flex items-center justify-between text-center'>
+                  <p className='text-2xl text-neutral-600'>Something went wrong!! {error}</p>
                 </div>
               )
             }
             
             {
               imgData.map((element)=> (
-                <Card element={element} key={element.id} />
+                <Card 
+                onSelect={() => setSelectedImage(element)}
+                element={element} 
+                key={element.id} 
+                />
               ))
             }
 
@@ -75,6 +81,15 @@ function App() {
 
         </main>
 
+        {/* Lightbox / image model */}
+
+        {
+          selectedImage && (
+            <LightBox selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+          )
+        }
+
+        
         <div className='w-full p-8 mt-8 flex items-center justify-center'>
           <button 
           onClick={() => setIndex(prev => prev + 1)}
